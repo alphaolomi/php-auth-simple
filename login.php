@@ -8,13 +8,8 @@ $email_err = $password_err = '';
 
 // Process form when post submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $rules = array(
-        'password'   => FILTER_SANITIZE_ENCODED,
-        'email'     => FILTER_VALIDATE_EMAIL
-
-    );
     // Sanitize POST
-    $_POST = filter_input_array(INPUT_POST, $rules);
+    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
     // Put post vars in regular vars
     $email = trim($_POST['email']);
@@ -49,12 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if (password_verify($password, $hashed_password)) {
                             // SUCCESSFUL LOGIN
                             session_start();
-                            // session_start([
-                            //     'cookie_lifetime' => 86400,
-                            // ]);
                             $_SESSION['email'] = $email;
                             $_SESSION['name'] = $row['name'];
-                            $_SESSION['time']     = time();
                             header('location: index.php');
                         } else {
                             // Display wrong password message
