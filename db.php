@@ -1,8 +1,8 @@
 <?php
 // DB Credentials
-define('DB_SERVER', 'localhost');
+define('DB_SERVER', '127.0.0.1');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '123456');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'phploginapp');
 
 // Attempt to connect to MySQL
